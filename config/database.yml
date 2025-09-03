@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: posifeed_api_production
-  username: posifeed_api
-  password: <%= ENV["POSIFEED_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
