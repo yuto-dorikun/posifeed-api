@@ -3,6 +3,16 @@
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   ./bin/rails db:prepare
+  
+  # Run seed data if in production and no users exist
+  if [ "${RAILS_ENV}" == "production" ]; then
+    if ! ./bin/rails runner "puts User.count" 2>/dev/null | grep -E '^[1-9]' >/dev/null; then
+      echo "No users found, running seeds..."
+      ./bin/rails db:seed
+      echo "Running additional seeds..."
+      ./bin/rails runner "load Rails.root.join('db/seeds_additional.rb')"
+    fi
+  fi
 fi
 
 exec "${@}"
