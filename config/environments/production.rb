@@ -90,4 +90,7 @@ Rails.application.configure do
 
   # Use environment variable for secret_key_base or generate one
   config.secret_key_base = ENV["SECRET_KEY_BASE"] || "965c55651b768bd2e4083df1debc614f4bb13b49cea772dc3a552d5882c9489b85ee4ab0bf1472ec90b6773921e07b13be7405904185c527dce6d6d2b72aaed4"
+  
+  # Allow all hosts for Railway deployment
+  config.hosts.clear
 end
