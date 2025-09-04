@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Root route for basic health check
+  root to: redirect('/api/v1/health')
+  
   # API routes
   namespace :api do
     namespace :v1 do
