@@ -18,9 +18,15 @@ Rails.application.configure do
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
+  
+  # Configure secret key base for Render
+  config.secret_key_base = ENV["SECRET_KEY_BASE"] || "4e2ba2b8a1e5c99d2a3b6f7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7"
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
+  
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -42,7 +48,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true  # Disabled for Railway deployment
+  # config.force_ssl = true  # Disabled for Render deployment
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)

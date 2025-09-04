@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins Rails.env.production? ? ['https://*.vercel.app', 'https://*.railway.app'] : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'http://100.64.1.16:5173', 'http://100.66.138.69:5173', 'http://100.115.6.63:5173']
+    origins Rails.env.production? ? ['https://*.vercel.app', 'https://*.railway.app', 'https://*.onrender.com'] : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'http://100.64.1.16:5173', 'http://100.66.138.69:5173', 'http://100.115.6.63:5173']
     
     resource '*',
       headers: :any,
